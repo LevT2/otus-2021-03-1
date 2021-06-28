@@ -80,6 +80,7 @@ class CancelSpec extends Specification with CatsEffect {
           case Right(_) => println("Success!")
         }
 
+      import scala.concurrent.ExecutionContext.Implicits.global
 
       def asyncCreate[F[_]: Async](f: Future[String]) =
         Async[F].async_[String] { cb =>
@@ -87,9 +88,9 @@ class CancelSpec extends Specification with CatsEffect {
             cb(tr.toEither)
 
           }
-
         }
 
+      ko
     }
   }
 }

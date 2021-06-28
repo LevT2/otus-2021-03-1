@@ -18,9 +18,10 @@ object Command {
     s.toLowerCase match {
       case "echo" => Echo.asRight
       case "exit" => Exit.asRight
-      case "set-deferred" => Exit.asRight
-      case "read-number" => Exit.asRight
+      case "set-deferred" => SetDeferred.asRight
+      case "read-number" => ReadNumber.asRight
       case cmd =>
+
         cmd.split(" ").toList match {
           case List("run-fiber", IntString(durationSec)) =>
             RunFiber(durationSec).asRight
